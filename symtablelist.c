@@ -28,7 +28,7 @@ SymTable_T SymTable_new(void)
      oSymTable->psFirstNode = NULL;
      oSymTable->length = 0;
      return oSymTable;
-};
+}
 
 void SymTable_free(SymTable_T oSymTable)
 {
@@ -47,13 +47,13 @@ void SymTable_free(SymTable_T oSymTable)
      }
 
      free(oSymTable);
-};
+}
 
 size_t SymTable_getLength(SymTable_T oSymTable)
 {
      assert(oSymTable != NULL);
      return oSymTable->length;
-};
+}
 
 int SymTable_put(SymTable_T oSymTable,
                  const char *pcKey, const void *pvValue)
@@ -89,7 +89,7 @@ int SymTable_put(SymTable_T oSymTable,
      oSymTable->length += 1;
 
      return 1;
-};
+}
 
 void *SymTable_replace(SymTable_T oSymTable,
                        const char *pcKey, const void *pvValue)
