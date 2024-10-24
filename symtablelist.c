@@ -1,6 +1,4 @@
 #include "symtable.h"
-#include <stdlib.h>
-#include <assert.h>
 
 struct SymTableNode
 {
@@ -62,7 +60,7 @@ int SymTable_put(SymTable_T oSymTable,
      struct SymTableNode *psNewNode;
      assert(oSymTable != NULL);
      assert(pcKey != NULL);
-     assert(pvValue != NULL);
+     /* assert(pvValue != NULL); */
      
      if (SymTable_contains(oSymTable, pcKey))
           return 0;
