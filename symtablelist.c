@@ -60,7 +60,7 @@ int SymTable_put(SymTable_T oSymTable,
      struct SymTableNode *psNewNode;
      assert(oSymTable != NULL);
      assert(pcKey != NULL);
-     /* assert(pvValue != NULL); */
+     assert(pvValue != NULL);
      
      if (SymTable_contains(oSymTable, pcKey))
           return 0;
@@ -95,8 +95,8 @@ void *SymTable_replace(SymTable_T oSymTable,
      struct SymTableNode *psCurrentNode;
      void *oldValue;
      assert(oSymTable != NULL);
-     assert(pvValue != NULL);
-     assert(pcKey != NULL);
+     /* assert(pvValue != NULL); */
+     assert(pcKey != NULL); 
 
      for (psCurrentNode = oSymTable->psFirstNode;
           psCurrentNode != NULL;
