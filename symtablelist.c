@@ -1,4 +1,6 @@
 #include "symtable.h"
+#include <stdlib.h>
+#include <assert.h>
 
 struct SymTableNode
 {
