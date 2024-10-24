@@ -62,7 +62,7 @@ int SymTable_put(SymTable_T oSymTable,
      assert(oSymTable != NULL);
      assert(pcKey != NULL);
      assert(pvValue != NULL);
-     const char *keyCopy;
+     char *keyCopy;
 
      if (SymTable_contains(oSymTable, pcKey))
           return 0;
@@ -112,7 +112,7 @@ void *SymTable_replace(SymTable_T oSymTable,
      }
 
      return NULL;
-};
+}
 
 int SymTable_contains(SymTable_T oSymTable, const char *pcKey)
 {
@@ -128,7 +128,7 @@ int SymTable_contains(SymTable_T oSymTable, const char *pcKey)
                return 1;
      }
      return 0;
-};
+}
 
 void *SymTable_get(SymTable_T oSymTable, const char *pcKey)
 {
@@ -144,7 +144,7 @@ void *SymTable_get(SymTable_T oSymTable, const char *pcKey)
                return (void *)psCurrentNode->pvValue;
      }
      return NULL;
-};
+}
 
 void *SymTable_remove(SymTable_T oSymTable, const char *pcKey)
 {
@@ -198,4 +198,4 @@ void SymTable_map(SymTable_T oSymTable,
           (*pfApply)(psCurrentNode->pcKey, 
                (void *)psCurrentNode->pvValue, (void *)pvExtra);
      }
-};
+}
