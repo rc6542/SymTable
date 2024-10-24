@@ -1,4 +1,4 @@
-#include "symtable.h"
+#include <symtable.h>
 
 SymTable_T SymTable_new(void);
 
