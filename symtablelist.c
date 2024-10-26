@@ -51,14 +51,16 @@ void SymTable_free(SymTable_T oSymTable)
 
      assert(oSymTable != NULL);
 
-     for (psCurrentNode = oSymTable->psFirstNode;
-          psCurrentNode != NULL;
-          psCurrentNode = psNextNode)
+     psCurrentNode = oSymTable->psFirstNode;
+
+     while(psCurrentNode != NULL)
      {
-          psNextNode = psCurrentNode->psNextNode;
-          free((void *)psCurrentNode->pcKey);
-          free(psCurrentNode);
+        psNextNode = psCurrentNode->psNextNode;
+        free((void *)psCurrentNode->pcKey);
+        free(psCurrentNode);
+        psCurrentNode = psNextNode;
      }
+
      oSymTable->length = 0;
      free(oSymTable);
 }
