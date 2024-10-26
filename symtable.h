@@ -6,9 +6,6 @@
 #ifndef symtable
 #define symtable
 #include <stddef.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <string.h>
 
 /* A SymTable_T object is a last-in-first-out collection of bindings. */
 typedef struct SymTable *SymTable_T;

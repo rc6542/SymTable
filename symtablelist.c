@@ -4,6 +4,9 @@
 /*--------------------------------------------------------------------*/
 
 #include "symtable.h"
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 
 /* Each SymTableNode stores a key-pair pair. SymTableNodes are linked to
    form a list.  */
