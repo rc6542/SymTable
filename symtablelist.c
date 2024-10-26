@@ -10,7 +10,7 @@
 struct SymTableNode
 {
      /* the key */
-     const void *pcKey;
+     void *pcKey;
 
      /* the value */
      const void *pvValue;
@@ -59,7 +59,7 @@ void SymTable_free(SymTable_T oSymTable)
           free((void *)psCurrentNode->pcKey);
           free(psCurrentNode);
      }
-          
+
      free(oSymTable);
 }
 
