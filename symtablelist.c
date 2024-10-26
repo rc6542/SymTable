@@ -10,7 +10,7 @@
 struct SymTableNode
 {
      /* the key */
-     void *pcKey;
+     const void *pcKey;
 
      /* the value */
      const void *pvValue;
