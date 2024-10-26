@@ -23,7 +23,7 @@ void SymTable_free(SymTable_T oSymTable);
 /* Returns the number of bindings in the symbol table oSymTable. */ 
 size_t SymTable_getLength(SymTable_T oSymTable);
 
-/* Adds a new key-value pair, pcKey and pcValue, to oSymTable if pcKey 
+/* Adds a new key-value pair, pcKey and pvValue, to oSymTable if pcKey 
    doesn't exist in oSymTable. Otherwise, leaves oSymTable unchanged. 
    Returns 1 if successful, 0 if the key already exists. */ 
 int SymTable_put(SymTable_T oSymTable,
