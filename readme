@@ -94,16 +94,17 @@ disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
 
-symtablelist.c: line 58: medium priority:
-   Do you want to validate 'pvValue' through an assert?
-   
-symtablelist.c: line 93: medium priority:
+symtablelist.c: line 74: medium priority:
    Do you want to validate 'pvValue' through an assert?
 
-   symtablelist.c: line 188: medium priority:
+symtablelist.c: line 110: medium priority:
+   Do you want to validate 'pvValue' through an assert?
+
+symtablelist.c: line 207: medium priority:
    Do you want to validate 'pvExtra' through an assert?
 
-pvValue and pvExtra can be null. Lecture 13, slide 27 for pvValue, and
+pvValue and pvExtra can be null, so asserting here would make it
+non-functional. Lecture 13, slide 27 for pvValue, and
 precept with Prof. Gabai explained that pvExtra can be null. p
 
 ------------------------------------------------------------------------

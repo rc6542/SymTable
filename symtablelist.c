@@ -61,6 +61,7 @@ void SymTable_free(SymTable_T oSymTable)
      }
 
      free(oSymTable);
+     printf("SymTable freed\n");
 }
 
 size_t SymTable_getLength(SymTable_T oSymTable)
