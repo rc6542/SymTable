@@ -59,9 +59,8 @@ void SymTable_free(SymTable_T oSymTable)
           free((void *)psCurrentNode->pcKey);
           free(psCurrentNode);
      }
-
+     oSymTable->length = 0;
      free(oSymTable);
-     printf("SymTable freed\n");
 }
 
 size_t SymTable_getLength(SymTable_T oSymTable)
