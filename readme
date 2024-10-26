@@ -56,7 +56,37 @@ disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
 
+splint symtablelist.c testsymtable.c
+Splint 3.1.2 --- 20 Aug 2022
 
+testsymtable.c: (in function testLargeTable)
+testsymtable.c:823:7: Buffer overflow possible with sprintf.  
+Recommend using
+                        snprintf instead: sprintf
+Use of function that may lead to buffer overflow. 
+    (Use -bufferoverflowhigh to
+inhibit warning)
+testsymtable.c:840:7: Buffer overflow possible with sprintf.  
+Recommend using
+                        snprintf instead: sprintf
+testsymtable.c:846:7: Buffer overflow possible with sprintf.  
+Recommend using
+                        snprintf instead: sprintf
+testsymtable.c:855:7: Buffer overflow possible with sprintf.  
+Recommend using
+                        snprintf instead: sprintf
+testsymtable.c:867:7: Buffer overflow possible with sprintf. 
+ Recommend using
+                        snprintf instead: sprintf
+testsymtable.c:877:7: Buffer overflow possible with sprintf.  
+Recommend using
+                        snprintf instead: sprintf
+testsymtable.c:890:7: Buffer overflow possible with sprintf.  
+Recommend using
+                        snprintf instead: sprintf
+
+i disagree with this because this is regarding testsymtable.c, which i 
+did not compose
 
 ------------------------------------------------------------------------
 What warnings does critTer generate on symtablelist.c, and what are your
@@ -64,7 +94,17 @@ disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
 
+symtablelist.c: line 58: medium priority:
+   Do you want to validate 'pvValue' through an assert?
+   
+symtablelist.c: line 93: medium priority:
+   Do you want to validate 'pvValue' through an assert?
 
+   symtablelist.c: line 188: medium priority:
+   Do you want to validate 'pvExtra' through an assert?
+
+pvValue and pvExtra can be null. Lecture 13, slide 27 for pvValue, and
+precept with Prof. Gabai explained that pvExtra can be null. p
 
 ------------------------------------------------------------------------
 What warnings does splint generate on symtablehash.c, and what are your

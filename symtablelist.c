@@ -1,16 +1,32 @@
+/*--------------------------------------------------------------------*/
+/* symtablelist.c                                                     */
+/* Author: Ryan Chen                                                  */
+/*--------------------------------------------------------------------*/
+
 #include "symtable.h"
 
+/* Each SymTableNode stores a key-pair pair. SymTableNodes are linked to
+   form a list.  */
 struct SymTableNode
 {
+     /* the key */
      const void *pcKey;
+
+     /* the value */
      const void *pvValue;
 
+     /* address of next SymTableNode */
      struct SymTableNode *psNextNode;
 };
 
+/* A SymTable is a structure that points to the first SymTableNode and 
+   stores the length of the linked list. */
 struct SymTable
 {
+     /* address of first SymTableNode */
      struct SymTableNode *psFirstNode;
+
+     /* stores length of the list of SymTableNodes */
      size_t length;
 };
 
@@ -58,6 +74,7 @@ int SymTable_put(SymTable_T oSymTable,
 {
      char *keyCopy;
      struct SymTableNode *psNewNode;
+
      assert(oSymTable != NULL);
      assert(pcKey != NULL);
      
@@ -93,8 +110,8 @@ void *SymTable_replace(SymTable_T oSymTable,
 {
      struct SymTableNode *psCurrentNode;
      void *oldValue;
+
      assert(oSymTable != NULL);
-     /* assert(pvValue != NULL); */
      assert(pcKey != NULL); 
 
      for (psCurrentNode = oSymTable->psFirstNode;
@@ -103,9 +120,9 @@ void *SymTable_replace(SymTable_T oSymTable,
      {
           if (strcmp(psCurrentNode->pcKey, pcKey) == 0)
           {
-              oldValue = (void *)psCurrentNode->pvValue; 
-          psCurrentNode->pvValue = pvValue;
-          return oldValue;
+               oldValue = (void *)psCurrentNode->pvValue; 
+               psCurrentNode->pvValue = pvValue;
+               return oldValue;
           }
      }
 
@@ -115,6 +132,7 @@ void *SymTable_replace(SymTable_T oSymTable,
 int SymTable_contains(SymTable_T oSymTable, const char *pcKey)
 {
      struct SymTableNode *psCurrentNode;
+
      assert(oSymTable != NULL);
      assert(pcKey != NULL);
 
@@ -131,6 +149,7 @@ int SymTable_contains(SymTable_T oSymTable, const char *pcKey)
 void *SymTable_get(SymTable_T oSymTable, const char *pcKey)
 {
      struct SymTableNode *psCurrentNode;
+
      assert(oSymTable != NULL);
      assert(pcKey != NULL);
 
@@ -187,6 +206,7 @@ void SymTable_map(SymTable_T oSymTable,
     const void *pvExtra)
 {
      struct SymTableNode *psCurrentNode;
+     
      assert(oSymTable != NULL);
      assert(pfApply != NULL);
 
