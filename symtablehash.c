@@ -8,7 +8,32 @@
 #include <assert.h>
 #include <string.h>
 
-/* */
+/* bucket counts to expand to */
+static const size_t bucketCount[] = {509, 1021, 2039, 4093, 8191, 
+16381, 32749, 65521};
+
+/* Each SymTableNode stores a key-pair pair. SymTableNodes are linked to
+   form a list.  */
+struct SymTableNode
+{
+     /* the key */
+     const void *pcKey;
+
+     /* the value */
+     const void *pvValue;
+
+     /* address of next SymTableNode */
+     struct SymTableNode *psNextNode;
+};
+
+struct SymTable {
+    struct SymTableNode **buckets;
+    size_t bucketCount;
+    size_t bindingCount;
+    size_t currentBucketIndex;
+};
+
+/* hash function */
 static size_t SymTable_hash(const char *pcKey, size_t uBucketCount) {
     const size_t HASH_MULTIPLIER = 65599;
     size_t u;

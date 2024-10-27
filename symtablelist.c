@@ -96,6 +96,7 @@ int SymTable_put(SymTable_T oSymTable,
           free(psNewNode);
           return 0;
      }
+     
      strcpy(keyCopy, pcKey);
 
      psNewNode->pcKey = keyCopy;
