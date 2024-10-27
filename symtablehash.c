@@ -8,6 +8,7 @@
 #include <assert.h>
 #include <string.h>
 
+/* */
 static size_t SymTable_hash(const char *pcKey, size_t uBucketCount) {
     const size_t HASH_MULTIPLIER = 65599;
     size_t u;
