@@ -46,7 +46,8 @@ struct SymTable
     size_t currentBucketIndex;
 };
 
-/* hash function */
+/* Function that hashes pcKey based on uBucketCount. Returns the modulus
+   which equals which bucket it goes into. */
 static size_t SymTable_hash(const char *pcKey, size_t uBucketCount)
 {
     const size_t HASH_MULTIPLIER = 65599;
