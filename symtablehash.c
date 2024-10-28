@@ -74,6 +74,7 @@ static void SymTable_expand(SymTable_T oSymTable)
     size_t oldBucketCount;
     size_t newBucketCount;
     size_t bucketIndex;
+    size_t newBucketIndex;
 
     if (oSymTable->bucketCount == 65521)
     {
@@ -99,7 +100,7 @@ static void SymTable_expand(SymTable_T oSymTable)
         {
             psNextNode = psCurrentNode->psNextNode;
 
-            size_t newBucketIndex = SymTable_hash(psCurrentNode->pcKey, 
+            newBucketIndex = SymTable_hash(psCurrentNode->pcKey, 
                                                         newBucketCount);
 
             psCurrentNode->psNextNode = moreBuckets[newBucketIndex];
