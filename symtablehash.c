@@ -76,7 +76,7 @@ static void SymTable_expand(SymTable_T oSymTable)
     size_t bucketIndex;
     size_t newBucketIndex;
 
-    if (oSymTable->bucketCount == 65521)
+    if (oSymTable->bucketCount == bucketCount[7])
     {
         return;
     }
