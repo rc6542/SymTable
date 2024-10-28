@@ -8,7 +8,7 @@
 #include <assert.h>
 #include <string.h>
 
-/* bucket counts to expand to */
+/* Bucket counts to expand to */
 static const size_t bucketCount[] = {509, 1021, 2039, 4093, 8191,
                                      16381, 32749, 65521};
 
@@ -60,6 +60,56 @@ static size_t SymTable_hash(const char *pcKey, size_t uBucketCount)
         uHash = uHash * HASH_MULTIPLIER + (size_t)pcKey[u];
 
     return uHash % uBucketCount;
+}
+
+/* Function that takes oSymTable and expands the buckets in it if it
+   reaches the max bucket count, listed in bucketCount. Index zero is
+   what the starting number of buckets is, and each index after is what
+   it should expand to. Stops expanding after 65521 buckets. */
+static void SymTable_expand(SymTable_T oSymTable)
+{
+    struct SymTableNode **moreBuckets;
+    struct SymTableNode *psCurrentNode;
+    struct SymTableNode *psNextNode;
+    size_t oldBucketCount;
+    size_t newBucketCount;
+    size_t bucketIndex;
+
+    if (oSymTable->bucketCount == 65521)
+    {
+        return;
+    }
+
+    oSymTable->currentBucketIndex++;
+    newBucketCount = bucketCount[oSymTable->currentBucketIndex];
+    oSymTable->bucketCount = newBucketCount;
+    oldBucketCount = oSymTable->bucketCount;
+    
+    moreBuckets = (struct SymTableNode **)calloc(newBucketCount, 
+                                        sizeof(struct SymTableNode *));
+    if (moreBuckets == NULL)
+        return; 
+
+    /* Rehashes nodes from old buckets into the new buckets */
+    for (bucketIndex = 0; bucketIndex < oldBucketCount; bucketIndex++)
+    {
+        for (psCurrentNode = oSymTable->buckets[bucketIndex]; 
+             psCurrentNode != NULL; 
+             psCurrentNode = psNextNode)
+        {
+            psNextNode = psCurrentNode->psNextNode;
+
+            size_t newBucketIndex = SymTable_hash(psCurrentNode->pcKey, 
+                                                        newBucketCount);
+
+            psCurrentNode->psNextNode = moreBuckets[newBucketIndex];
+            moreBuckets[newBucketIndex] = psCurrentNode;
+        }
+    }
+
+    free(oSymTable->buckets);
+
+    oSymTable->buckets = moreBuckets;
 }
 
 SymTable_T SymTable_new(void)
@@ -128,6 +178,11 @@ int SymTable_put(SymTable_T oSymTable,
 
     assert(oSymTable != NULL);
     assert(pcKey != NULL);
+
+    if (oSymTable->bindingCount > oSymTable->bucketCount) 
+    {
+        SymTable_expand(oSymTable);
+    }
 
     /* find which bucket by hashing key */
     bucketIndex = SymTable_hash(pcKey, oSymTable->bucketCount);
