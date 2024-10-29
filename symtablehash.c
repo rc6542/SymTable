@@ -12,6 +12,9 @@
 static const size_t bucketCount[] = {509, 1021, 2039, 4093, 8191,
                                      16381, 32749, 65521};
 
+/* Max bucket count per assignment specs */
+static const size_t MAX_BUCKET_COUNT = 65521;
+
 /* Each SymTableNode stores a key-pair pair. SymTableNodes are linked to
    form a list.  */
 struct SymTableNode
@@ -76,7 +79,7 @@ static void SymTable_expand(SymTable_T oSymTable)
     size_t bucketIndex;
     size_t newBucketIndex;
 
-    if (oSymTable->bucketCount == bucketCount[7])
+    if (oSymTable->bucketCount == MAX_BUCKET_COUNT)
     {
         return;
     }
