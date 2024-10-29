@@ -76,7 +76,7 @@ static void SymTable_expand(SymTable_T oSymTable)
     struct SymTableNode *psNextNode;
     size_t oldBucketCount;
     size_t newBucketCount;
-    size_t bucketIndex;
+    size_t oldBucketIndex;
     size_t newBucketIndex;
 
     if (oSymTable->bucketCount == MAX_BUCKET_COUNT)
@@ -95,9 +95,11 @@ static void SymTable_expand(SymTable_T oSymTable)
         return; 
 
     /* Rehashes nodes from old buckets into the new buckets */
-    for (bucketIndex = 0; bucketIndex < oldBucketCount; bucketIndex++)
+    for (oldbucketIndex = 0; 
+         oldbucketIndex < oldBucketCount; 
+         oldbucketIndex++)
     {
-        for (psCurrentNode = oSymTable->buckets[bucketIndex]; 
+        for (psCurrentNode = oSymTable->buckets[oldBucketIndex]; 
              psCurrentNode != NULL; 
              psCurrentNode = psNextNode)
         {
