@@ -95,9 +95,9 @@ static void SymTable_expand(SymTable_T oSymTable)
         return; 
 
     /* Rehashes nodes from old buckets into the new buckets */
-    for (oldbucketIndex = 0; 
-         oldbucketIndex < oldBucketCount; 
-         oldbucketIndex++)
+    for (oldBucketIndex = 0; 
+         oldBucketIndex < oldBucketCount; 
+         oldBucketIndex++)
     {
         for (psCurrentNode = oSymTable->buckets[oldBucketIndex]; 
              psCurrentNode != NULL; 
