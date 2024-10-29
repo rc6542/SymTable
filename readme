@@ -58,7 +58,8 @@ Ryan Chen
 ------------------------------------------------------------------------
 What is your assessment of the assignment? Was it helpful? Was it fun?
 
-
+Tedious, but reinforced my understanding of linked lists and hash table
+implemented linked lists. 
 
 ------------------------------------------------------------------------
 (optional) What information can you provide about your submission that
@@ -111,10 +112,10 @@ write "None."
 symtablehash.c: line 123: medium priority:
    Do you want to validate 'pvValue' through an assert?
 
-   symtablehash.c: line 170: medium priority:
+symtablehash.c: line 170: medium priority:
    Do you want to validate 'pvValue' through an assert?
 
-   symtablehash.c: line 283: medium priority:
+symtablehash.c: line 283: medium priority:
    Do you want to validate 'pvExtra' through an assert?
 
 pvValue and pvExtra can be null, so asserting here would make it
