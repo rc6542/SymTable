@@ -15,4 +15,5 @@ symtablelist.o: symtablelist.c symtable.h
 	gcc217 -c symtablelist.c
 symtablehash.o: symtablehash.c symtable.h
  	gcc217 -c symtablehash.c
+
 	
